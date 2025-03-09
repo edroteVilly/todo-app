@@ -48,6 +48,7 @@ export default function TaskManager() {
   return (
     <div className="task-wrapper">
       <header>
+        <h1>To-Do List App</h1>
         <button className="theme-toggle" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
           {theme === "light" ? "🌑 Dark Mode" : "☀️ Light Mode"}
         </button>
@@ -76,9 +77,12 @@ export default function TaskManager() {
                 onChange={(e) => setUpdatedText(e.target.value)}
               />
             ) : (
-              <span className="task-text" onClick={() => toggleTaskStatus(index)}>{task.text}</span>
+              <span className="task-text">{task.text}</span>
             )}
             <div className="task-controls">
+              <button className="complete-btn" onClick={() => toggleTaskStatus(index)}>
+                {task.done ? "✅ Completed" : "✔ Complete"}
+              </button>
               <button className="delete-btn" onClick={() => handleDeleteTask(index)}>❌</button>
               {editingTask === index ? (
                 <button className="save-btn" onClick={() => saveEdit(index)}>💾</button>
